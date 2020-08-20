@@ -1,2 +1,0 @@
-(this["webpackJsonptaswell-blog-typescript"]=this["webpackJsonptaswell-blog-typescript"]||[]).push([[9],{249:function(t,e,n){"use strict";n.r(e);var i=n(3),o=n(0);function r(){var t=Object(i.a)(["\n    font-size: 30px;\n    text-align: center;\n    width: 100%;\n  "]);return r=function(){return t},t}var a={NotFound:n(4).a.div(r())};e.default=function(){return o.createElement(a.NotFound,null,o.createElement("i",{className:"iconfont icon-zanwu",style:{fontSize:40}}),o.createElement("div",null,"- Permission denied -"))}}}]);
-//# sourceMappingURL=9.3e0821c8.chunk.js.map
