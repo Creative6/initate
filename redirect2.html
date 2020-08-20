@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>LOADING...</title>
+    <style>
+        body,
+        html {
+            font-family: consolas;
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+    <script src="https://cdn.bootcss.com/qs/6.9.1/qs.min.js"></script>
+    <script>
+        const paraStr = window.location.search.split('?')[1]
+        const para = Qs.parse(paraStr)
+        Cookies.set('twa', para.token, {
+            path: '/',
+            expires: 7,
+            domain: '.taswell.cn'
+        })
+        console.log(para)
+        window.location.replace(para.link ? 'https://initate.com/' + para.link.replace('$-$-$-$-$', '#') :
+            'https://initate.com')
+    </script>
+</head>
+
+<body>
+    LOADING...
+</body>
+
+</html>
