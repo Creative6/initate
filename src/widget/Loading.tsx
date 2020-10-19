@@ -1,7 +1,7 @@
 import * as React from "react"
 
 const T: React.FC<any> = (props) => {
-  const { text = "Loading..." } = props
+  const { text = "Loading" } = props
 
   return (
     <div
@@ -12,19 +12,19 @@ const T: React.FC<any> = (props) => {
         padding: 10,
       }}
     >
-      {text === "Loading..." && (
+      {text === "Loading" && (
         <img
-          src={require("../assets/loading.svg")}
+          src={require("../assets/loadingBar.svg")}
           alt=""
           style={{
-            width: 20,
-            position: "absolute",
-            marginLeft: -22,
-            marginTop: -1,
+            width: 40,
+            // position: "absolute",
+            // marginLeft: -22,
+            // marginTop: -1,
           }}
         />
       )}
-      {text}
+      <div>{text}</div>
     </div>
   )
 }

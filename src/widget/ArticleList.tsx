@@ -51,7 +51,7 @@ const T: React.FC = () => {
           setPage(nowPage)
         }}
       >
-        {loading ? "Loading..." : "Load More"}
+        {loading ? "Loading" : "Load More"}
       </S.LoadBtn>
     </>
   )
