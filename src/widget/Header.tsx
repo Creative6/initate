@@ -45,7 +45,7 @@ const T: React.FC = () => {
           }}
         >
           <img src={icon} alt="" style={{ borderRadius: 10 }} />
-          <span style={{ marginLeft: 5 }}>INITATE</span>
+          <span style={{ marginLeft: 10 }}>INITATE</span>
           <S.SubTitle>Who threatens my concentration?</S.SubTitle>
           <i className={"iconfont icon-leaf"} style={{ marginLeft: 5 }}></i>
         </S.Title>
