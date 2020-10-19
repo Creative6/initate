@@ -12,6 +12,7 @@ import SearchResult from "./page/SearchResult"
 import NoPermission from "./page/NoPermission"
 import Users from "./page/Users"
 import LoginPop from "./widget/LoginPop"
+import Redirect from "./page/Redirect"
 
 const S: any = {
   Container: styled.div`
@@ -56,7 +57,7 @@ const T: React.FC = () => {
     >
       <S.Container>
         <Publish showPublish={showPublish} />
-        <LoginPop show={showLogin} setShowLogin={setShowLogin}/>
+        <LoginPop show={showLogin} setShowLogin={setShowLogin} />
         <Header />
         <S.Body>
           <S.BodyContent>
@@ -68,6 +69,7 @@ const T: React.FC = () => {
                 <Route path="/searchresult/:keyword" component={SearchResult} />
                 <Route path="/nopermission" component={NoPermission} />
                 <Route path="/users/:name" component={Users} />
+                <Route path="/redirect" component={Redirect} />
                 <Route component={NotFound} />
               </Switch>
             </Router>
