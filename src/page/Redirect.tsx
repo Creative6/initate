@@ -10,8 +10,8 @@ const T: React.FC = () => {
 
   useEffect(() => {
     const { search } = params
-    const twa = qs.parse(search.slice(1))
-    Cookies.set("twa", twa, {
+    const para = qs.parse(search.slice(1))
+    Cookies.set("twa", para.twa, {
       expires: 7,
     })
     if (localStorage.getItem("last_url")) {
