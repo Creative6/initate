@@ -1,1 +1,0 @@
-scp -v -r ./build/* root@47.99.97.247:/usr/local/nginx/html/taswell
