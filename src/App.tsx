@@ -1,18 +1,18 @@
-import React, { createContext, useState } from "react"
-import styled from "styled-components"
-import Header from "./widget/Header"
-import NotFound from "./page/NotFound"
-import Publish from "./widget/Publish"
-import { HashRouter as Router, Route, Switch } from "react-router-dom"
-import bg from "./assets/bg.jpg"
-import Home from "./page/Home"
-import ArticleInfo from "./page/ArticleInfo"
-import Message from "./page/Message"
-import SearchResult from "./page/SearchResult"
-import NoPermission from "./page/NoPermission"
-import Users from "./page/Users"
-import LoginPop from "./widget/LoginPop"
-import Redirect from "./page/Redirect"
+import React, { createContext, useState } from 'react'
+import styled from 'styled-components'
+import Header from './widget/Header'
+import NotFound from './page/NotFound'
+import Publish from './widget/Publish'
+import { HashRouter as Router, Route, Switch } from 'react-router-dom'
+import bg from './assets/bg.jpg'
+import Home from './page/Home'
+import ArticleInfo from './page/ArticleInfo'
+import Message from './page/Message'
+import SearchResult from './page/SearchResult'
+import NoPermission from './page/NoPermission'
+import Users from './page/Users'
+import LoginPop from './widget/LoginPop'
+import Redirect from './page/Redirect'
 
 const S: any = {
   Container: styled.div`
@@ -35,7 +35,7 @@ const S: any = {
     width: 1000px;
     margin: 20px auto;
     display: flex;
-  `,
+  `
 }
 
 export const AppContext = createContext({})
@@ -52,7 +52,7 @@ const T: React.FC = () => {
         showPublish,
         setArticleInfo,
         articleInfo,
-        setShowLogin,
+        setShowLogin
       }}
     >
       <S.Container>
@@ -77,17 +77,15 @@ const T: React.FC = () => {
           {/* <Login /> */}
           <div
             style={{
-              textAlign: "center",
+              textAlign: 'center',
               fontSize: 12,
               padding: 10,
-              color: "#000",
+              color: '#000'
             }}
           >
-            -- Powered by Flower ©2020 --
+            - Powered by Flower ©{new Date().getFullYear()} -
             <br />
-            <span style={{ textDecoration: "none", color: "#000" }}>
-              Initating Spin V1.01
-            </span>
+            <span style={{ textDecoration: 'none', color: '#000' }}>- Anaio V1.05 -</span>
           </div>
         </S.Body>
       </S.Container>

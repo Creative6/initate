@@ -1,12 +1,12 @@
-import React, { useState, useEffect } from "react"
-import styled from "styled-components"
-import { GET_ARTICLE_INFO } from "../api"
-import ArticleItem from "../widget/ArticleItem"
-import CommentBox from "../widget/CommentBox"
-import MoreForUser from "../widget/MoreForUser"
-import MoreLikeThis from "../widget/MoreLikeThis"
-import Loading from "../widget/Loading"
-import "braft-editor/dist/output.css"
+import React, { useState, useEffect } from 'react'
+import styled from 'styled-components'
+import { GET_ARTICLE_INFO } from '../api'
+import ArticleItem from '../widget/ArticleItem'
+import CommentBox from '../widget/CommentBox'
+import MoreForUser from '../widget/MoreForUser'
+import MoreLikeThis from '../widget/MoreLikeThis'
+import Loading from '../widget/Loading'
+import 'braft-editor/dist/output.css'
 
 const S: any = {
   BodyLeft: styled.div`
@@ -74,11 +74,11 @@ const S: any = {
     :hover {
       color: skyblue;
     }
-  `,
+  `
 }
 
 const T: React.FC = (props: any) => {
-  const [info, setInfo] = useState<any>("")
+  const [info, setInfo] = useState<any>('')
 
   useEffect(() => {
     const { match } = props
@@ -86,8 +86,8 @@ const T: React.FC = (props: any) => {
     const { id } = params
     GET_ARTICLE_INFO({ id })
       .then((rs: any) => {
-        setInfo(rs)
-        document.title = rs.title || "NO TITLE"
+        setInfo(rs[0])
+        document.title = rs.title || 'NO TITLE'
       })
       .catch(() => {
         setInfo({})
@@ -103,36 +103,21 @@ const T: React.FC = (props: any) => {
           <S.BodyLeft>
             <S.Content>
               <ArticleItem {...info} simple={true} />
-              <S.ContentBox
-                className="braft-output-content"
-                dangerouslySetInnerHTML={{ __html: info.content }}
-              />
-              <div style={{ padding: "0px 10px" }}>
+              <S.ContentBox className="braft-output-content" dangerouslySetInnerHTML={{ __html: info.content }} />
+              <div style={{ padding: '0px 10px' }}>
                 <CommentBox {...info} />
               </div>
             </S.Content>
           </S.BodyLeft>
           <S.BodyRight>
             <S.StickyBox>
-              <div style={{ background: "rgb(255 255 255 / 88%)" }}>
-                {info.uid && <MoreForUser uid={info.uid} id={info.id} />}
-              </div>
-              <div
-                style={{ background: "rgb(255 255 255 / 88%)", marginTop: 10 }}
-              >
-                {info.uid && (
-                  <MoreLikeThis
-                    title={info.title}
-                    id={info.id}
-                    tag={info.tag}
-                  />
-                )}
-              </div>
+              <div style={{ background: 'rgb(255 255 255 / 88%)' }}>{info.uid && <MoreForUser uid={info.uid} id={info.id} />}</div>
+              <div style={{ background: 'rgb(255 255 255 / 88%)', marginTop: 10 }}>{info.uid && <MoreLikeThis title={info.title} id={info.id} tag={info.tag} />}</div>
             </S.StickyBox>
           </S.BodyRight>
         </>
       ) : (
-        <Loading text={"- This article does not exist -"} />
+        <Loading text={'- This article does not exist -'} />
       )}
     </>
   )

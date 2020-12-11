@@ -1,20 +1,12 @@
-import React, { useEffect, useState, useContext } from "react"
-import styled from "styled-components"
-import {
-  GET_ARTICLES_BY_USER,
-  GET_USERINFO_BY_NAME,
-  GET_FOLLOWING,
-  GET_FOLLOWERS,
-  SET_FOLLOW,
-  GET_MY_FOLLOWS,
-  DOMAIN_STATIC,
-} from "../api"
-import ArticleItem from "../widget/ArticleItem"
-import Loading from "../widget/Loading"
-import UserItem from "../widget/UserItem"
-import jwt from "jwt-decode"
-import Cookies from "js-cookie"
-import { AppContext } from "../App"
+import React, { useEffect, useState, useContext } from 'react'
+import styled from 'styled-components'
+import { GET_ARTICLES_BY_USER, GET_USERINFO_BY_NAME, GET_FOLLOWING, GET_FOLLOWERS, SET_FOLLOW, GET_MY_FOLLOWS, DOMAIN_STATIC } from '../api'
+import ArticleItem from '../widget/ArticleItem'
+import Loading from '../widget/Loading'
+import UserItem from '../widget/UserItem'
+import jwt from 'jwt-decode'
+import Cookies from 'js-cookie'
+import { AppContext } from '../App'
 
 const S: any = {
   Content: styled.div`
@@ -103,10 +95,10 @@ const S: any = {
       color: #333;
       border-bottom: 2px solid #000;
     }
-  `,
+  `
 }
 
-const searchArr = ["", "?following", "?followers"]
+const searchArr = ['', '?following', '?followers']
 
 const T: React.FC<any> = (props: any) => {
   const { setShowLogin } = useContext<any>(AppContext)
@@ -121,7 +113,7 @@ const T: React.FC<any> = (props: any) => {
   const [userinfo, setUserinfo] = useState<any>({})
   const [loginData, setLoginData] = useState<any>({})
   const [isLogin, setIsLogin] = useState(false)
-  const [list, setList] = useState<any>("")
+  const [list, setList] = useState<any>('')
   const [following, setFollowing] = useState([])
   const [followers, setFollowers] = useState([])
   const [isMe, setIsMe] = useState(false)
@@ -131,10 +123,10 @@ const T: React.FC<any> = (props: any) => {
   useEffect(() => {
     try {
       //@ts-ignore
-      const res = jwt(Cookies.get("twa"))
+      const res = jwt(Cookies.get('twa'))
       console.log(res)
       //@ts-ignore
-      const { uid = "", name: jname = "" } = res
+      const { uid = '', name: jname = '' } = res
       if (uid) {
         setLoginData(res)
         setIsLogin(true)
@@ -154,11 +146,11 @@ const T: React.FC<any> = (props: any) => {
         setIsMe(false)
       }
     } catch (error) {
-      console.log("GET LOGIN DATA FAIL")
+      console.log('GET LOGIN DATA FAIL')
     }
 
-    GET_USERINFO_BY_NAME({ name }).then((rs) => {
-      setUserinfo(rs)
+    GET_USERINFO_BY_NAME({ name }).then((rs: any) => {
+      setUserinfo(rs[0])
     })
     GET_ARTICLES_BY_USER({ name }).then((rs: any) => {
       setList(rs)
@@ -179,11 +171,12 @@ const T: React.FC<any> = (props: any) => {
 
   const getMyFollows = () => {
     GET_MY_FOLLOWS().then((rs: any) => {
-      const { following = [], followers = [] } = rs
+      const { following = [], followers = [] } = rs[0]
       const _following: any = []
       const _followers: any = []
       following.forEach((item: any) => _following.push(item.target_uid))
       followers.forEach((item: any) => _followers.push(item.uid))
+      console.log({ following, followers })
       setMyFollowing(_following)
       setMyFollowers(_followers)
     })
@@ -201,31 +194,12 @@ const T: React.FC<any> = (props: any) => {
         <S.Content>
           <S.UserInfoContent>
             <S.UserIcon src={userinfo.avatar_url} alt="" />
-            <S.UserName>{userinfo.name || "NOTHING"}</S.UserName>
+            <S.UserName>{userinfo.name || 'UNKNOW'}</S.UserName>
             <S.UserEmail>
-              {userinfo.email || "NOEmail"},Following - {following.length}
+              {userinfo.email || 'NOEmail'},Following - {following.length}
               ,Followers - {followers.length}
             </S.UserEmail>
-            {isLogin && !isMe && (
-              <S.FucBtn
-                onClick={() => {
-                  SET_FOLLOW({
-                    target_uid: userinfo.uid,
-                    type:
-                      myFollowing.indexOf(userinfo.uid) >= 0
-                        ? "UNFOLLOW"
-                        : "FOLLOW",
-                  }).then(() => {
-                    getMyFollows()
-                    GET_FOLLOWERS({ name }).then((rs: any) => {
-                      setFollowers(rs)
-                    })
-                  })
-                }}
-              >
-                {myFollowing.indexOf(userinfo.uid) >= 0 ? "UNFOLLOW" : "FOLLOW"}
-              </S.FucBtn>
-            )}
+            {isLogin && !isMe && <S.FucBtn>{myFollowing.indexOf(userinfo.uid) >= 0 ? 'UNFOLLOW' : 'FOLLOW'}</S.FucBtn>}
             {!isLogin && (
               <S.FucBtn
                 onClick={() => {
@@ -243,7 +217,7 @@ const T: React.FC<any> = (props: any) => {
               onClick={() => {
                 changeIndex(0)
               }}
-              className={index === 0 && "active"}
+              className={index === 0 && 'active'}
             >
               Releases
             </S.TagBtn>
@@ -251,7 +225,7 @@ const T: React.FC<any> = (props: any) => {
               onClick={() => {
                 changeIndex(1)
               }}
-              className={index === 1 && "active"}
+              className={index === 1 && 'active'}
             >
               Following
             </S.TagBtn>
@@ -259,7 +233,7 @@ const T: React.FC<any> = (props: any) => {
               onClick={() => {
                 changeIndex(2)
               }}
-              className={index === 2 && "active"}
+              className={index === 2 && 'active'}
             >
               Followers
             </S.TagBtn>

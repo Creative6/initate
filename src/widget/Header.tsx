@@ -1,7 +1,7 @@
 import React from "react"
 import styled from "styled-components"
 import Search from "./Search"
-import icon from "../assets/icon.gif"
+// import icon from "../assets/icon.gif"
 
 const S = {
   Header: styled.div`
@@ -32,6 +32,7 @@ const S = {
   SubTitle: styled.span`
     font-size: 12px;
     margin-left: 5px;
+    color: #888;
   `,
 }
 
@@ -44,9 +45,9 @@ const T: React.FC = () => {
             window.location.href = "/"
           }}
         >
-          <img src={icon} alt="" style={{ borderRadius: 10 }} />
-          <span style={{ marginLeft: 10 }}>INITATE</span>
-          <S.SubTitle>Who threatens my concentration?</S.SubTitle>
+          {/* <img src={icon} alt="" style={{ borderRadius: 10 }} /> */}
+          <span style={{ fontWeight: "bold" }}>Anaio</span>
+          <S.SubTitle>Creating the world line .</S.SubTitle>
           <i className={"iconfont icon-leaf"} style={{ marginLeft: 5 }}></i>
         </S.Title>
         <Search />
